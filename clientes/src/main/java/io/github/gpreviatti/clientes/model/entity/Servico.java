@@ -1,7 +1,6 @@
 package io.github.gpreviatti.clientes.model.entity;
 
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
