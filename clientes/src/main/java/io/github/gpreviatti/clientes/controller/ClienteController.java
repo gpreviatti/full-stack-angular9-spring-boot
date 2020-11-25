@@ -7,8 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/clientes")
+@CrossOrigin("http://localhost:4200")
 public class ClienteController {
 
     private final ClienteRepository repository;
@@ -24,6 +27,11 @@ public class ClienteController {
         return repository.save(cliente);
     }
 
+    @GetMapping()
+    public List<Cliente> list () {
+        return repository.findAll();
+    }
+
     @GetMapping("{id}")
     public Cliente findById(@PathVariable("id") Integer id) {
         return repository
@@ -36,8 +44,8 @@ public class ClienteController {
     public void delete(@PathVariable("id") Integer id) {
         repository
         .findById(id)
-        .map(cliente -> {
-            repository.delete(cliente);
+        .map(client -> {
+            repository.delete(client);
             return Void.TYPE;
         })
         .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
