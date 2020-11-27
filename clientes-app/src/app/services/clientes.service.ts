@@ -7,19 +7,48 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ClientesService {
-  url: string = 'http://localhost:8080/api/clientes'
+  url: string = 'http://localhost:8080/api/clientes/'
 
-  constructor( private http: HttpClient ) {
+  constructor( 
+    private http: HttpClient 
+  ) { }
+
+  /**
+   * Get all resources
+   */
+  get () : Observable<Cliente[]> {
+    return this.http.get<Cliente[]>(this.url);
   }
 
-  getCliente () : Cliente {
-    let cliente = new Cliente();
-    cliente.nome = "Falano de tal";
-    cliente.cpf = "8888888";
-    return cliente;
+  /**
+   * Get a resource
+   * @param id 
+   */
+  getById (id : number) : Observable<Cliente> {
+    return this.http.get<Cliente>(this.url + id)
   }
 
+  /**
+   * Create new resource
+   * @param cliente 
+   */
   store ( cliente : Cliente) : Observable<Cliente> {
     return this.http.post<Cliente>(this.url, cliente);
+  }
+
+  /**
+   * Update resource
+   * @param cliente 
+   */
+  update (cliente : Cliente) : Observable<Cliente> {
+    return this.http.put<Cliente>(this.url + cliente.id, cliente);
+  }
+
+  /**
+   * Delete a resource
+   * @param id 
+   */
+  delete ( id : number ) : Observable<Cliente> {
+    return this.http.delete<Cliente>(this.url + id);
   }
 }
