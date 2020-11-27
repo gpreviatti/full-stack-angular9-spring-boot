@@ -19,9 +19,9 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>ID:</label>
-                    <input 
-                        type="text" 
-                        class="form-control" 
+                    <input
+                        type="text"
+                        class="form-control"
                         disabled="true"
                         [ngModel]="cliente.id"
                         name="id"
@@ -32,9 +32,9 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Data Cadastro:</label>
-                    <input 
-                        type="text" 
-                        class="form-control" 
+                    <input
+                        type="text"
+                        class="form-control"
                         disabled="true"
                         [ngModel]="cliente.dataCadastro"
                         name="dataCadastro"
@@ -47,9 +47,9 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Nome:</label>
-                    <input 
-                        type="text" 
-                        class="form-control" 
+                    <input
+                        type="text"
+                        class="form-control"
                         [(ngModel)]="cliente.nome"
                         name="nome"
                     >
@@ -59,9 +59,9 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>CPF:</label>
-                    <input 
-                        type="text" 
-                        class="form-control" 
+                    <input
+                        type="text"
+                        class="form-control"
                         [(ngModel)]="cliente.cpf"
                         name="cpf"
                     >
@@ -81,7 +81,11 @@
                 </button>
             </div>
             <div class="col-md-6">
-                <button type="button" class="btn btn-danger btn-block" (click)="voltarLista()">
+				<button
+					type="button"
+					class="btn btn-danger btn-block"
+					(click)="voltarLista()"
+				>
                     <i class="fa fa-arrow-alt-circle-left"></i>
                     Voltar
                 </button>

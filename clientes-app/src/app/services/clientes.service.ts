@@ -9,8 +9,8 @@ import { Observable } from 'rxjs';
 export class ClientesService {
   url: string = 'http://localhost:8080/api/clientes/'
 
-  constructor( 
-    private http: HttpClient 
+  constructor(
+    private http: HttpClient
   ) { }
 
   /**
@@ -22,7 +22,7 @@ export class ClientesService {
 
   /**
    * Get a resource
-   * @param id 
+   * @param id
    */
   getById (id : number) : Observable<Cliente> {
     return this.http.get<Cliente>(this.url + id)
@@ -30,7 +30,7 @@ export class ClientesService {
 
   /**
    * Create new resource
-   * @param cliente 
+   * @param cliente
    */
   store ( cliente : Cliente) : Observable<Cliente> {
     return this.http.post<Cliente>(this.url, cliente);
@@ -38,15 +38,18 @@ export class ClientesService {
 
   /**
    * Update resource
-   * @param cliente 
+   * @param cliente
    */
   update (cliente : Cliente) : Observable<Cliente> {
-    return this.http.put<Cliente>(this.url + cliente.id, cliente);
+	if (cliente.id) {
+		return this.http.put<Cliente>(this.url + cliente.id, cliente);
+	}
+	return null;
   }
 
   /**
    * Delete a resource
-   * @param id 
+   * @param id
    */
   delete ( id : number ) : Observable<Cliente> {
     return this.http.delete<Cliente>(this.url + id);

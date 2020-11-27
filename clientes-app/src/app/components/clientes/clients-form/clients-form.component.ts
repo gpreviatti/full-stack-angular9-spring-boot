@@ -29,15 +29,15 @@ export class ClientsFormComponent implements OnInit {
       this.id = urlParams['id']
       if (this.id) {
         this.service.getById(this.id).subscribe(
-          res => this.cliente = res, 
-          error => this.cliente = new Cliente()  
+          res => this.cliente = res,
+          error => this.cliente = new Cliente()
         )
       }
     })
   }
 
   onSubmit() {
-    if (this.cliente) {
+    if (this.id) {
       this.service.update(this.cliente).subscribe(
         response => {
           this.errors = null;
