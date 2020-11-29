@@ -1,12 +1,14 @@
-<h1 class="mt-4">Clientes</h1>
-<ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">{{ cliente.id ? 'Editar' : 'Cadastrar'}}</li>
-</ol>
+<h1 class="mt-4">Clientes - {{ cliente.id ? 'Editar' : 'Cadastrar'}}</h1>
 <div class="container">
     <form #clientForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="row" *ngIf="success">
             <div class="col-md-12">
-                <div class="alert alert-success" role="alert"> Cliente Salvo/Atualizado com sucesso </div>
+				<div
+					class="alert alert-success"
+					role="alert"
+				>
+					Cliente Salvo/Atualizado com sucesso
+				</div>
             </div>
         </div>
 
@@ -71,13 +73,21 @@
 
         <div class="row">
             <div class="col-md-6">
-                <button type="submit" class="btn btn-primary btn-block" *ngIf="cliente.id">
-                    <i class="fa fa-sync-alt"></i>
-                    Atualizar
-                </button>
-                <button type="submit" class="btn btn-success btn-block" *ngIf="!cliente.id" >
+				<button
+					type="submit"
+					class="btn btn-primary btn-block"
+					*ngIf="!cliente.id"
+				>
                     <i class="fa fa-save"></i>
                     Salvar
+                </button>
+				<button
+					type="submit"
+					class="btn btn-success btn-block"
+					*ngIf="cliente.id"
+				>
+					<i class="fa fa-sync-alt"></i>
+                    Atualizar
                 </button>
             </div>
             <div class="col-md-6">
